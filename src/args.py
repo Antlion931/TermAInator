@@ -3,7 +3,7 @@ import sys
 
 # Returns a dictionary of parsed arguments
 # file_names: list of file names from the -f flag
-def parse_args():
+def parse_args(max_files_content_len):
     parser = argparse.ArgumentParser(description="TermAInator is a terminal based wrapper for AI models like chatGPT or Llama.")
 
     parser.add_argument(
@@ -36,7 +36,7 @@ def parse_args():
     files = None
     if args.files is not None:
         filenames = [f for f in args.files]
-        files = load_files(filenames, MAX_LEN=10000)
+        files = load_files(filenames, max_files_content_len)
     parsed_arguments['filenames'] = filenames or None
     parsed_arguments['files'] = files or None
 
@@ -48,7 +48,7 @@ def parse_args():
     return parsed_arguments
 
 
-def load_files(filenames, MAX_LEN=10000):
+def load_files(filenames, max_len=10000):
     files = []
     total_length = 0
 
@@ -59,8 +59,8 @@ def load_files(filenames, MAX_LEN=10000):
                 files.append(file_content)
                 total_length += len(file_content)
 
-                if total_length > MAX_LEN:
-                    print(f"Error: The total length of the files exceeds the maximum allowed length of {MAX_LEN} characters.")
+                if total_length > max_len:
+                    print(f"Error: The total length of the files exceeds the maximum allowed length of {max_len} characters.")
                     sys.exit(1)
 
         except IOError as e:
