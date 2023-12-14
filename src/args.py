@@ -27,8 +27,6 @@ def parse_args(max_files_content_len):
         action = 'store_true',
     )
 
-    args = parser.parse_args()
-
     parsed_arguments = {}
 
     args.files

@@ -1,0 +1,32 @@
+{
+  "error": [{
+      "is_task": true,
+      "arg_number": 0,
+      "prompt": "You are an expert in debuging. Explain to me what means this error, and how I can deal with it."
+    }],
+  "program": [{
+      "is_task": true,
+      "arg_number": 2,
+      "prompt": "You are an senior _1 programer, always happy to help. Write a snipt of code that _2 writen in easy to read _1."
+    }],
+    "command": [{
+      "is_task": true,
+      "arg_number": 1,
+      "prompt": "You are an profesional admin, always happy to help. Write command to _2."
+    }],
+  "eli5": [{
+      "is_task": false,
+      "arg_number": 0,
+      "prompt": "Explain every thing what have you done like I am five years old."
+    }],
+  "emphasise_changes": [{
+      "is_task": false,
+      "arg_number": 0,
+      "prompt": "Every change in my code emphasise, for example writing on the end of that line comment with '<-'."
+    }],
+    "compact": [{
+      "is_task": false,
+      "arg_number": 0,
+      "prompt": "Write your answer in compact way, avoid long sentences."
+    }]
+}

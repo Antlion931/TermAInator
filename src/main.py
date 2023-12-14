@@ -1,6 +1,7 @@
 from args import parse_args
 from gpt import gpt_proompt
 import sys
+import json
 
 MAX_PROOMPT_LEN = 10000
 
@@ -30,7 +31,18 @@ def handler_error_flag(proompt, args):
         stdin_content = stdin_content[:max_len]
     return proompt + stdin_content
 
+def read_config(config_path):
+    try:
+        with open(config_path, 'r') as file:
+            json_config = json.load(file)
+        return json_config
+    except FileNotFoundError:
+        return f"File not found: {file_path}"
+    except Exception as e:
+        return f"Error reading the file: {e}"
+
 def main():
+    print(read_config('config.json'))
     args = parse_args(MAX_PROOMPT_LEN)
     proompt = ""
 
