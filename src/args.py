@@ -4,7 +4,7 @@ import sys
 # Returns a dictionary of parsed arguments
 # file_names: list of file names from the -f flag
 def parse_args():
-    parser = argparse.ArgumentParser(description="Your script description here.")
+    parser = argparse.ArgumentParser(description="TermAInator is a terminal based wrapper for AI models like chatGPT or Llama.")
 
     parser.add_argument(
         '-f', '--files', 
