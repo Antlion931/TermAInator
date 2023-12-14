@@ -13,15 +13,36 @@ def parse_args():
         required=False,
     )
 
+    parser.add_argument(
+        '-b', '--backend',
+        help='Backend to use for the AI model. Currently supported: chatGPT, llama',
+        default='chatGPT',
+    )
+
+    # it does not take an argument, so it is a flag
+    parser.add_argument(
+        '-e', '--error',
+        help='Takes error from stdin.',
+        required=False,
+        action = 'store_true',
+    )
+
     args = parser.parse_args()
 
     parsed_arguments = {}
 
-    files = args.files
-    if files is not None:
-        filenames = [f for f in files]
-        parsed_arguments['filenames'] = filenames
-        parsed_arguments['files'] = load_files(filenames, MAX_LEN=10000)
+    args.files
+    filenames = None
+    files = None
+    if args.files is not None:
+        filenames = [f for f in args.files]
+        files = load_files(filenames, MAX_LEN=10000)
+    parsed_arguments['filenames'] = filenames or None
+    parsed_arguments['files'] = files or None
+
+    parsed_arguments['backend'] = args.backend
+
+    parsed_arguments['error'] = args.error or None
 
 
     return parsed_arguments
